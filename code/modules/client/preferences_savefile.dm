@@ -319,6 +319,7 @@
 	READ_FILE(S["alternate_option"], alternate_option)
 	READ_FILE(S["job_preferences"], job_preferences)
 	READ_FILE(S["preferred_slot"], preferred_slot)
+	READ_FILE(S["preferred_slot2"], preferred_slot2)
 	READ_FILE(S["gear"], gear)
 	READ_FILE(S["underwear"], underwear)
 	READ_FILE(S["undershirt"], undershirt)
@@ -370,6 +371,7 @@
 	alternate_option= sanitize_integer(alternate_option, 0, 2, initial(alternate_option))
 	job_preferences = SANITIZE_LIST(job_preferences)
 	preferred_slot	= sanitize_inlist(preferred_slot, SLOT_DRAW_ORDER, initial(preferred_slot))
+	preferred_slot2	= sanitize_inlist(preferred_slot2, SLOT_DRAW_ORDER, initial(preferred_slot2))
 	if(gender == MALE)
 		underwear		= sanitize_integer(underwear, 1, length(GLOB.underwear_m), initial(underwear))
 	else
@@ -448,6 +450,7 @@
 	alternate_option= sanitize_integer(alternate_option, 0, 2, initial(alternate_option))
 	job_preferences = SANITIZE_LIST(job_preferences)
 	preferred_slot	= sanitize_inlist(preferred_slot, SLOT_DRAW_ORDER, initial(preferred_slot))
+	preferred_slot2	= sanitize_inlist(preferred_slot2, SLOT_DRAW_ORDER, initial(preferred_slot2))
 	if(gender == MALE)
 		underwear		= sanitize_integer(underwear, 1, length(GLOB.underwear_m), initial(underwear))
 	else
@@ -500,6 +503,7 @@
 	WRITE_FILE(S["alternate_option"], alternate_option)
 	WRITE_FILE(S["job_preferences"], job_preferences)
 	WRITE_FILE(S["preferred_slot"], preferred_slot)
+	WRITE_FILE(S["preferred_slot2"], preferred_slot2)
 	WRITE_FILE(S["gear"], gear)
 	WRITE_FILE(S["underwear"], underwear)
 	WRITE_FILE(S["undershirt"], undershirt)

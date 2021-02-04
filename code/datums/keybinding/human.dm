@@ -10,6 +10,13 @@
 	description = ""
 	keybind_signal = COMSIG_KB_QUICKEQUIP
 
+/datum/keybinding/human/quick_equip
+	hotkey_keys = list("V")
+	name = "Custom_equip"
+	full_name = "Custom equip"
+	description = ""
+	keybind_signal = COMSIG_KB_CUSTEQUIP
+
 
 /datum/keybinding/human/holster
 	hotkey_keys = list("H")

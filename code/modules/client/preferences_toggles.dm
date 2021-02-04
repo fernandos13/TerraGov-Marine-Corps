@@ -202,6 +202,43 @@
 
 	to_chat(src, "<span class='notice'>You will now equip/draw from the [slot] slot first.</span>")
 
+/client/verb/preferred_slot2()
+	set category = "Preferences"
+	set name = "Set Custom Slot"
+
+	var/slot = input("Which slot would you like to draw/equip from?", "Preferred Slot") as null|anything in list("Suit Storage", "Suit Inside", "Belt", "Back", "Boot", "Helmet", "Left Pocket", "Right Pocket", "Webbing", "Belt", "Belt Holster", "Suit Storage Holster", "Back Holster")
+	switch(slot)
+		if("Suit Storage")
+			prefs.preferred_slot2 = SLOT_S_STORE
+		if("Suit Inside")
+			prefs.preferred_slot2 = SLOT_WEAR_SUIT
+		if("Belt")
+			prefs.preferred_slot2 = SLOT_BELT
+		if("Back")
+			prefs.preferred_slot2 = SLOT_BACK
+		if("Boot")
+			prefs.preferred_slot2 = SLOT_IN_BOOT
+		if("Helmet")
+			prefs.preferred_slot2 = SLOT_IN_HEAD
+		if("Left Pocket")
+			prefs.preferred_slot2 = SLOT_L_STORE
+		if("Right Pocket")
+			prefs.preferred_slot2 = SLOT_R_STORE
+		if("Webbing")
+			prefs.preferred_slot2 = SLOT_IN_ACCESSORY
+		if("Belt")
+			prefs.preferred_slot2 = SLOT_IN_BELT
+		if("Belt Holster")
+			prefs.preferred_slot2 = SLOT_IN_HOLSTER
+		if("Suit Storage Holster")
+			prefs.preferred_slot2 = SLOT_IN_S_HOLSTER
+		if("Back Holster")
+			prefs.preferred_slot2 = SLOT_IN_B_HOLSTER
+
+	prefs.save_character()
+
+	to_chat(src, "<span class='notice'>You will now equip/draw from the [slot] slot first.</span>")
+
 
 /client/verb/typing_indicator()
 	set category = "Preferences"

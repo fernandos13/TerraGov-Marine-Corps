@@ -35,6 +35,7 @@
 	randomize_appearance()
 
 	RegisterSignal(src, list(COMSIG_KB_QUICKEQUIP, COMSIG_CLICK_QUICKEQUIP), .proc/do_quick_equip)
+	RegisterSignal(src, list(COMSIG_KB_CUSTEQUIP, COMSIG_CLICK_CUSTEQUIP), .proc/do_custom_equip)
 	RegisterSignal(src, COMSIG_KB_HOLSTER, .proc/do_holster)
 	RegisterSignal(src, COMSIG_KB_UNIQUEACTION, .proc/do_unique_action)
 	RegisterSignal(src, COMSIG_KB_RAILATTACHMENT, .proc/do_activate_rail_attachment)

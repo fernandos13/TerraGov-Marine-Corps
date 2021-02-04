@@ -31,6 +31,40 @@
 		else
 			update_inv_r_hand(FALSE)
 
+/mob/living/carbon/human/proc/do_custom_equip()
+	SIGNAL_HANDLER_DOES_SLEEP
+	. = COMSIG_KB_ACTIVATED //The return value must be a flag compatible with the signals triggering this.
+
+	if(incapacitated() || lying_angle || istype(loc, /obj/vehicle/multitile/root/cm_armored))
+		return
+
+	var/obj/item/I = get_active_held_item()
+	if(!I)
+		if(next_move > world.time)
+			return
+		if(client?.prefs?.preferred_slot2)
+			if(draw_from_slot_if_possible(client.prefs.preferred_slot2))
+				next_move = world.time + 3
+				return
+		for(var/slot in SLOT_DRAW_ORDER)
+			if(draw_from_slot_if_possible(slot))
+				next_move = world.time + 3
+				return
+	else
+		if(s_active && s_active.can_be_inserted(I))
+			s_active.handle_item_insertion(I, FALSE, src)
+			return
+		if(client?.prefs?.preferred_slot2)
+			if(equip_to_slot_if_possible(I, client.prefs.preferred_slot2, FALSE, FALSE, FALSE))
+				return
+		if(!equip_to_appropriate_slot(I, FALSE))
+			return
+		if(hand)
+			update_inv_l_hand(FALSE)
+		else
+			update_inv_r_hand(FALSE)
+
+
 
 /mob/living/carbon/human/proc/equip_in_one_of_slots(obj/item/W, list/slots, del_on_fail = 1)
 	for (var/slot in slots)
